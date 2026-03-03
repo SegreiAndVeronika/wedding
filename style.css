@@ -320,28 +320,36 @@ nav a {
 ========================= */
 @media (max-width: 768px) {
     body {
-        /* Отключаем фиксацию, которая ломает масштаб на iOS/Android */
-        background-attachment: scroll !important; 
+        /* Заменяем фото на вертикальное специально для телефона */
+        background-image: url("images/mobile-bg.jpg") !important;
         
-        /* Растягиваем только по ширине, чтобы фото не увеличивалось в 10 раз */
-        background-size: 100% auto; 
+        /* Возвращаем фиксацию, но без бага растягивания */
+        background-attachment: scroll; 
         
-        /* Прижимаем фото к верху, чтобы лица были видны сразу */
-        background-position: center top; 
-        
-        /* Фон под фото (когда пролистаете вниз) будет белым или в цвет темы */
-        background-color: #ffffff; 
+        /* Важно: cover заставит вертикальное фото красиво заполнить экран телефона */
+        background-size: cover; 
+        background-position: center top;
         background-repeat: no-repeat;
+        
+        /* Делаем фон фиксированным через хак, который понимают телефоны */
+        background-attachment: fixed;
     }
 
-    /* Уменьшаем отступы секций, чтобы на узком экране было больше места */
+    /* На мобильных фиксированный фон часто лагает, 
+       поэтому для плавности лучше сделать его обычным: */
+    @supports (-webkit-touch-callout: none) {
+       body {
+           background-attachment: scroll; /* Для iPhone */
+       }
+    }
+
+    .hero {
+        height: 100vh;
+    }
+
     .invitation, .wishes, .schedule {
-        margin: 10px;
-        padding: 40px 15px;
-    }
-
-    /* Уменьшаем заголовок, чтобы он не переносился некрасиво */
-    .hero h1 {
-        font-size: 28px;
+        margin: 15px;
+        padding: 40px 20px;
+        background: rgba(255, 255, 255, 0.95); /* Чуть плотнее фон для текста */
     }
 }
