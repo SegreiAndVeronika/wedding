@@ -319,37 +319,38 @@ nav a {
    АДАПТИВ ДЛЯ МОБИЛЬНЫХ
 ========================= */
 @media (max-width: 768px) {
+    /* 1. Убираем фон у самого body, чтобы он не конфликтовал */
     body {
-        /* Заменяем фото на вертикальное специально для телефона */
-        background-image: url("images/mobile-bg.jpg") !important;
-        
-        /* Возвращаем фиксацию, но без бага растягивания */
-        background-attachment: scroll; 
-        
-        /* Важно: cover заставит вертикальное фото красиво заполнить экран телефона */
-        background-size: cover; 
-        background-position: center top;
+        background: white !important; 
+    }
+
+    /* 2. Создаем фиксированный фон через "виртуальный слой" */
+    body::before {
+        content: "";
+        position: fixed; /* Фиксируем на экране */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* Ваше мобильное вертикальное фото */
+        background-image: url("images/mobile-bg.jpg"); 
+        background-size: cover;
+        background-position: center center;
         background-repeat: no-repeat;
-        
-        /* Делаем фон фиксированным через хак, который понимают телефоны */
-        background-attachment: fixed;
+        z-index: -1; /* Уводим под текст */
+        will-change: transform; /* Оптимизация для плавности */
     }
 
-    /* На мобильных фиксированный фон часто лагает, 
-       поэтому для плавности лучше сделать его обычным: */
-    @supports (-webkit-touch-callout: none) {
-       body {
-           background-attachment: scroll; /* Для iPhone */
-       }
-    }
-
+    /* 3. Настраиваем прозрачность блоков, чтобы видеть фото */
     .hero {
         height: 100vh;
+        background: transparent;
     }
 
     .invitation, .wishes, .schedule {
         margin: 15px;
         padding: 40px 20px;
-        background: rgba(255, 255, 255, 0.95); /* Чуть плотнее фон для текста */
+        background: rgba(255, 255, 255, 0.9); /* Делаем подложку под текст */
+        border-radius: 15px;
     }
 }
