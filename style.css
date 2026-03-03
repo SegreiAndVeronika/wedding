@@ -1,3 +1,7 @@
+/* =========================
+   ОБЩИЕ НАСТРОЙКИ
+========================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -7,9 +11,16 @@
 body {
     font-family: 'Montserrat', sans-serif;
     color: #2d2d2d;
+    /* Устанавливаем главное фото фоном для всего сайта */
+    background-image: url("images/bg.jpg"); 
+    background-size: cover;       /* Растянуть на весь экран */
+    background-attachment: fixed; /* ЗАФИКСИРОВАТЬ (не будет двигаться при скролле) */
+    background-position: center;  /* Центрировать */
+    background-repeat: no-repeat; /* Не дублировать */
 }
-
-/* МЕНЮ */
+/* =========================
+   МЕНЮ
+========================= */
 
 header {
     position: fixed;
@@ -37,30 +48,46 @@ nav a {
     margin: 8px 0;
 }
 
-/* HERO */
+/* =========================
+   HERO (ГЛАВНЫЙ ЭКРАН)
+========================= */
 
 .hero {
+    position: relative;
     min-height: 100vh;
-    background: url("images/hero-bg.jpg") no-repeat center center;
-    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 100px 20px 40px;
-    position: relative;
+    padding: 120px 20px 60px;
+    overflow: hidden;
+}
+
+.hero-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Фото заполнит весь экран, не оставляя дыр */
+    object-position: center; /* Центрирует лица на фото */
+    z-index: -2;
 }
 
 .overlay {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255,255,255,0.6);
+    background: rgba(0,0,0,0.35); /* затемнение для читаемости текста */
+    z-index: -1;
 }
 
 .hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 1;
+    color: #000;
 }
 
 .hero h1 {
@@ -79,12 +106,18 @@ nav a {
     gap: 20px;
 }
 
-/* СЕКЦИИ */
+/* =========================
+   СЕКЦИИ
+========================= */
 
-.invitation,
-.wishes {
+.invitation, 
+.wishes, 
+.schedule {
     padding: 80px 20px;
-    background: url("images/pattern.jpg") repeat;
+    background-image: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url("images/pattern.jpg");
+    background-size: cover;
+    margin: 20px;
+    border-radius: 20px;
 }
 
 .container {
@@ -125,6 +158,10 @@ nav a {
     opacity: 0.7;
 }
 
+/* =========================
+   ФОРМА RSVP
+========================= */
+
 .rsvp-form {
     display: flex;
     flex-direction: column;
@@ -134,9 +171,10 @@ nav a {
 
 .rsvp-form input,
 .rsvp-form textarea {
-    padding: 10px;
-    border-radius: 8px;
+    padding: 12px;
+    border-radius: 10px;
     border: 1px solid #ccc;
+    font-size: 14px;
 }
 
 .radio-group {
@@ -145,9 +183,12 @@ nav a {
     gap: 20px;
 }
 
+/* =========================
+   РАСПИСАНИЕ
+========================= */
+
 .schedule {
     padding: 80px 20px;
-    background: #f9f6f1;
 }
 
 .timeline {
@@ -158,6 +199,7 @@ nav a {
     display: flex;
     gap: 20px;
     margin-bottom: 20px;
+    align-items: flex-start;
 }
 
 .time {
@@ -167,7 +209,12 @@ nav a {
 
 .event {
     flex: 1;
+    text-align: left;
 }
+
+/* =========================
+   КАРТА
+========================= */
 
 .map-section {
     padding: 80px 20px;
@@ -187,4 +234,98 @@ nav a {
     color: white;
     text-decoration: none;
     border-radius: 30px;
+}
+
+/* =========================
+   АДАПТАЦИЯ ДЛЯ ТЕЛЕФОНА
+========================= */
+
+@media (max-width: 768px) {
+
+    .hero {
+        padding: 140px 20px 60px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .time-block {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .event {
+        text-align: center;
+    }
+}
+
+/* =========================
+   ФОТО И ЦИТАТА В ПРИГЛАШЕНИИ
+========================= */
+
+/* Центрируем контейнер внутри invitation */
+.invitation .container {
+    text-align: center;
+}
+
+/* Общая фотография пары */
+.couple-photo {
+    display: block;
+    max-width: 500px;
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    margin: 20px auto;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 1;
+    position: relative;
+}
+
+/* Цитата под фото */
+.quote {
+    display: block;
+    font-style: italic;
+    font-size: 18px;
+    margin: 15px auto 25px;
+    max-width: 500px;
+    color: #333;
+}
+
+/* Индивидуальные фотографии */
+.person {
+    display: inline-block;
+    margin: 20px 15px;
+    text-align: center;
+}
+
+.person img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #5f7c5f;
+    display: block;
+    margin: 0 auto;
+}
+
+.person h3 {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 768px) {
+    .couple-photo {
+        max-width: 100%;
+    }
+    .quote {
+        font-size: 16px;
+        max-width: 90%;
+    }
+    .person img {
+        width: 120px;
+        height: 120px;
+    }
 }
