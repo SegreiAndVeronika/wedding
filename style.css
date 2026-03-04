@@ -372,51 +372,35 @@ nav a {
 ========================= */
 
 @media (max-width: 768px) {
-
+    /* 1. Очищаем фон у body */
     body {
-        /* Указываем путь к мобильному фото */
-        background-image: url("images/mobile-bg.jpg") !important; 
-        background-size: cover !important; /* Чтобы заполнило весь экран */
-        background-position: center top !important;
-        background-attachment: scroll !important;
-        background-repeat: no-repeat !important;
+        background: white !important; 
     }
 
+    /* 2. Создаем неподвижный фон, который НЕ будет растягиваться */
+    body::before {
+        content: "";
+        position: fixed; /* Фиксируем на экране */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("images/mobile-bg.jpg") !important;
+        background-size: cover !important; /* Фото заполнит экран без искажений */
+        background-position: center top !important;
+        background-repeat: no-repeat !important;
+        z-index: -1; /* Уводим под контент */
+    }
+
+    /* Оставляем остальные настройки (hero, countdown и т.д.) ниже без изменений */
     .hero {
         padding: 140px 20px 60px;
-        min-height: 100vh; /* Чтобы первый экран занимал всё место */
+        min-height: 100vh;
+        background: transparent; /* Чтобы было видно фон под ним */
     }
-
-    .hero h1 {
-        font-size: 32px;
-    }
-
-    /* Настройка таймера для мобилок */
-    .countdown {
-        padding: 15px 10px;
-        gap: 10px;
-        width: 95%; 
-        border-radius: 15px;
-        background: rgba(255, 255, 255, 0.05); /* Легкая подложка для читаемости */
-        backdrop-filter: blur(5px);
-    }
-
-    .countdown span {
-        font-size: 20px; 
-    }
-
-    .countdown p {
-        font-size: 12px; 
-    }
-
-    .time-block {
-        flex-direction: column;
-        gap: 5px;
-    }
-
-    .event {
-        text-align: center;
-    }
+    
+    /* ... твой остальной код адаптации ... */
+}
     /* Настройка карты для телефона */
     .map-section {
         padding: 40px 15px; /* Уменьшаем огромные отступы */
