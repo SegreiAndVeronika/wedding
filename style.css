@@ -326,40 +326,47 @@ nav a {
    КАРТА
 ========================= */
 
-@media (max-width: 768px) {
-    /* 1. Очищаем фон у body */
-    body {
-        background: white !important; 
-    }
-
-    /* 2. Создаем неподвижный фон, который НЕ будет растягиваться */
-    body::before {
-        content: "";
-        position: fixed; /* Фиксируем на экране */
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url("images/mobile-bg.jpg") !important;
-        background-size: cover !important; /* Фото заполнит экран без искажений */
-        background-position: center top !important;
-        background-repeat: no-repeat !important;
-        z-index: -1; /* Уводим под контент */
-    }
-
-    /* Оставляем остальные настройки (hero, countdown и т.д.) ниже без изменений */
-    .hero {
-        padding: 140px 20px 60px;
-        min-height: 100vh;
-        background: transparent; /* Чтобы было видно фон под ним */
-    }
-    
-    /* ... твой остальной код адаптации ... */
+.map-section {
+    padding: 80px 20px;
 }
 
+.map-wrapper {
+    max-width: 800px; /* Ограничиваем ширину на ПК, чтобы не была на весь экран */
+    margin: 0 auto;   /* Центрируем всю конструкцию */
+    text-align: center;
+}
 
+.map-container {
+    margin-top: 30px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 100%;
+}
 
+/* =========================
+   КНОПКА ЯНДЕКС КАРТ (ОЛИВКОВЫЙ ОВАЛ)
+========================= */
 
+.map-button {
+    display: inline-block !important;
+    margin-top: 25px !important;
+    padding: 14px 40px !important;
+    background-color: #5f7c5f !important; /* Твой оливковый цвет */
+    color: #ffffff !important;            /* Белый текст */
+    text-decoration: none !important;      /* Убираем синее подчеркивание */
+    border-radius: 50px !important;       /* Овальная форма */
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    font-family: 'Montserrat', sans-serif !important;
+    transition: transform 0.2s ease, background-color 0.3s ease !important;
+    cursor: pointer !important;
+}
+
+.map-button:hover {
+    background-color: #4a634a !important; /* Немного темнее при наведении */
+    transform: scale(1.03);               /* Легкое увеличение */
+}
 /* =========================
    АДАПТАЦИЯ ДЛЯ ТЕЛЕФОНА
 ========================= */
@@ -427,13 +434,10 @@ nav a {
 
     /* Настройка кнопки под картой */
     .map-button {
-        display: block; /* Делаем блочной, чтобы центрировать */
-        width: 90%;     /* Почти на всю ширину экрана для удобства */
-        margin: 20px auto 0; /* Центрируем и добавляем отступ сверху */
-        padding: 14px;
-        font-size: 15px;
-        text-align: center;
+        display: block !important;
+        width: 85% !important;
+        margin: 20px auto !important;
+        text-align: center !important;
+        padding: 12px 20px !important;
     }
-
 }
-
