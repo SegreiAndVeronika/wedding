@@ -6,7 +6,6 @@
     <title>Сергей & Вероника — Свадьба</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
@@ -14,21 +13,22 @@
 <!-- БУРГЕР-МЕНЮ -->
 <header>
     <div class="burger" onclick="toggleMenu()">☰</div>
-
     <nav id="menu">
-        <a href="#hero">Главная</a>
-        <a href="#invitation">Приглашение</a>
-        <a href="#wishes">Пожелания</a>
-    </nav>
+    <a href="#hero" onclick="toggleMenu()">Главная</a>
+    <a href="#invitation" onclick="toggleMenu()">Приглашение</a>
+    <a href="#wishes" onclick="toggleMenu()">Пожелания</a>
+    <!-- Добавляем этот пункт -->
+    <a href="#map-section" onclick="toggleMenu()">Место проведения</a> 
+</nav>
 </header>
 
 <!-- HERO -->
 <section class="hero" id="hero">
-    <!-- Теперь здесь только контент, картинку мы удалили -->
     <div class="hero-content">
         <p class="subtitle">ВМЕСТЕ И НАВСЕГДА</p>
         <h1>Сергей <span class="amp">&</span> Вероника</h1>
         <p class="wedding-date">19 сентября 2026 <br> 16:00</p>
+	<div class="timer-card">
         <div class="countdown">
             <div><span id="days">00</span><p>дней</p></div>
             <div><span id="hours">00</span><p>часов</p></div>
@@ -37,9 +37,9 @@
         </div>
     </div>
 </section>
+
 <!-- ПРИГЛАШЕНИЕ -->
 <section class="invitation" id="invitation">
-
     <div class="container">
 
         <h2 class="section-title">Дорогой Гость!</h2>
@@ -71,46 +71,80 @@
         </div>
 
     </div>
-
 </section>
+
 <!-- ПОЖЕЛАНИЯ И ПОДТВЕРЖДЕНИЕ -->
 <section class="wishes" id="wishes">
     <div class="container">
+
         <h2 class="section-title">Пожелания по подаркам</h2>
+
         <p class="text">
             Ваше присутствие в день нашей свадьбы —
             самый значимый подарок для нас!
         </p>
 
         <h3 class="sub-title">Примечание</h3>
+
         <p class="text">
             Будем благодарны, если Вы воздержитесь
             от криков "Горько" на празднике.
         </p>
 
-        <form id="rsvp-form" class="rsvp-form">
-            <input type="text" id="name" placeholder="Ваше имя" required>
+        <!-- КНОПКА -->
+        <button id="toggleForm" class="confirm-toggle">
+            Подтвердить!
+        </button>
 
-            <div class="radio-group">
-                <label>
-                    <input type="radio" name="attendance" value="Буду" required>
-                    Буду
-                </label>
+        <!-- ВЫЕЗЖАЮЩАЯ ФОРМА -->
+        <div id="rsvpContainer" class="rsvp-hidden">
 
-                <label>
-                    <input type="radio" name="attendance" value="Не буду">
-                    Не буду
-                </label>
-            </div>
+            <form id="rsvp-form" class="rsvp-form">
 
-            <textarea id="message" placeholder="Комментарий (необязательно)"></textarea>
+    <p>Ваше имя и фамилия</p>
+    <input type="text" id="mainName" placeholder="Введите ваше имя" required>
 
-            <button type="submit" class="confirm-btn">
-                Отправить
-            </button>
-        </form>
+    <p>Сколько человек будет с вами</p>
+    <input type="number" id="totalCount" min="1" value="1" placeholder="Введите число" required>
 
-        <p id="response-message"></p>
+    <p>Имена гостей (через запятую)</p>
+    <textarea id="guestsNames" placeholder="Если вы не один — укажите имена"></textarea>
+
+    <div class="radio-group">
+        <p>Будете употреблять алкоголь?</p>
+        <label>
+            <input type="radio" name="alcohol" value="Да" required>
+            Да
+        </label>
+        <label>
+            <input type="radio" name="alcohol" value="Нет">
+            Нет
+        </label>
+    </div>
+
+    <div class="radio-group">
+        <p>Вы будете присутствовать?</p>
+        <label>
+            <input type="radio" name="attendance" value="Буду" required>
+            Буду
+        </label>
+        <label>
+            <input type="radio" name="attendance" value="Не буду">
+            Не буду
+        </label>
+    </div>
+
+    <p>Комментарий (необязательно)</p>
+    <textarea id="message" placeholder="Введите комментарий"></textarea>
+
+    <button type="submit" class="send-btn">Отправить</button>
+
+</form>
+
+            <p id="response-message"></p>
+
+        </div>
+
     </div>
 </section>
 
@@ -119,31 +153,23 @@
     <div class="container">
         <h2 class="section-title">Расписание дня</h2>
         <div class="timeline">
-            <div class="time-block">
-                <div class="time">16:00</div>
-                <div class="event">(сборы, фуршет)</div>
-            </div>
-            <div class="time-block">
-                <div class="time">16:30</div>
-                <div class="event">(выездная церемония)</div>
-            </div>
-            <div class="time-block">
-                <div class="time">17:00</div>
-                <div class="event">(банкет)</div>
-            </div>
-            <div class="time-block">
-                <div class="time">23:00</div>
-                <div class="event">(завершение вечера)</div>
-            </div> 
+
+            <div class="time-block"><div class="time">16:00</div><div class="event">(Сборы,Фуршет)</div></div>
+            <div class="time-block"><div class="time">16:30</div><div class="event">(Выездная церемония)</div></div>
+            <div class="time-block"><div class="time">17:00</div><div class="event">(Банкет)</div></div>
+            <div class="time-block"><div class="time">23:00</div><div class="event">(Завершение вечера)</div></div>
+
         </div>
     </div>
 </section>
 
 <!-- КАРТА -->
-<section class="map-section">
+<section class="map-section" id="map-section"> 
     <div class="container">
         <h2 class="section-title">Место проведения</h2>
-
+        ...
+    </div>
+</section>
         <div class="map-container">
             <iframe 
                 src="https://yandex.ru/map-widget/v1/?ll=51.889313%2C55.666352&z=16&oid=199287506021"
@@ -166,10 +192,3 @@
 <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
