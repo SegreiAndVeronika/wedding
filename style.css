@@ -1,9 +1,6 @@
-/* =========================
-   ОБЩИЕ НАСТРОЙКИ
-========================= */
-*/
+@import url('https://fonts.googleapis.com');
 
-{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -104,19 +101,28 @@ nav a {
 }
 
 .subtitle {
-    letter-spacing: 5px;
-    font-size: 14px;
-    margin-bottom: 10px;
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+    font-style: italic;
 }
 
 .wedding-date {
-    margin-top: 20px;
-    font-size: 18px;
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    margin-bottom: 25px;
     letter-spacing: 2px;
+    font-style: italic;
 }
 
 /* ТАЙМЕР (СТЕКЛО) */
 .countdown {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+    font-style: italic;
     margin-top: 30px;
     display: inline-flex;
     justify-content: center;
@@ -160,21 +166,43 @@ nav a {
 .section-title {
     font-family: 'Playfair Display', serif;
     font-size: 32px;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     letter-spacing: 2px;
     font-style: italic; /* Трендовый наклон */
 }
 
-.text {
-    font-family: 'Tenor Sans', sans-serif !important; /* Наш аналог Todi */
-    font-size: 18px !important; 
-    line-height: 1.8 !important;
-    letter-spacing: 2px !important; /* "Растягиваем" текст для дорогого вида */
-    text-transform: uppercase;     /* Todi лучше всего смотрится заглавными */
-    font-weight: 400 !important;
-    color: #000000 !important; 
-    display: block;
+.sub-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+    font-style: italic; /* Трендовый наклон */
 }
+.text {
+    font-family: 'Cinzel', serif !important;
+    font-size: 17px !important; 
+    letter-spacing: 4px !important; /* Тот самый "элитный" воздух */
+    text-transform: uppercase !important; 
+    line-height: 2.2 !important;
+    color: #1a1a1a !important;
+    text-align: center;
+    font-weight: 400 !important;
+    display: block;
+    font-style: italic
+}
+.details {
+    font-family: 'Cinzel', serif !important;
+    font-size: 20px !important; 
+    letter-spacing: 4px !important; /* Тот самый "элитный" воздух */
+    text-transform: uppercase !important; 
+    line-height: 2.2 !important;
+    color: #1a1a1a !important;
+    text-align: center;
+    font-weight: 400 !important;
+    display: block;
+    font-style: italic
+}
+
 
 /* ФОТО И ЦИТАТА */
 .couple-photo {
@@ -187,29 +215,27 @@ nav a {
 }
 
 .quote {
-    font-family: 'Tenor Sans', sans-serif !important; /* Наш аналог Todi */
-    font-size: 22px !important; 
-    line-height: 1.8 !important;
-    letter-spacing: 4px !important; /* "Растягиваем" текст для дорогого вида */
-    margin: 30px 0 !important;
-    text-transform: uppercase;     /* Todi лучше всего смотрится заглавными */
-    font-weight: 400 !important;
-    color: #000000 !important; 
-    display: block;
+    font-family: 'Cinzel', serif !important;
+    font-size: 16px !important; 
+    letter-spacing: 6px !important;
+    text-transform: uppercase;
+    margin: 40px auto !important;
+    color: #000000 !important;
 }
-
 
 /* =========================
    ФОРМА И КНОПКИ
 ========================= */
 .confirm-toggle {
+
     margin-top: 20px;
-    padding: 14px 40px;
+    padding: 10px 25px;
     background: #5f7c5f;
-    color: white;
+    color: #f1f0e8 !important;
+    font-family: 'Cinzel', serif !important;
     border: none;
     border-radius: 50px;
-    font-size: 16px;
+    font-size: 20px;
     cursor: pointer;
     transition: 0.3s;
     box-shadow: 0 5px 15px rgba(95, 124, 95, 0.3); /* Мягкая тень */
@@ -243,13 +269,15 @@ nav a {
 }
 
 .send-btn {
-    padding: 12px 40px;
+    padding: 10px 25px;
     background: #5f7c5f;
-    color: white;
+    color: #f1f0e8 !important; /* Тот же бежевый */
+    font-family: 'Cinzel', serif !important;
+    letter-spacing: 2px;
+    text-transform: uppercase;
     border-radius: 30px;
     border: none;
     cursor: pointer;
-    transition: 0.3s;
 }
 
 /* =========================
@@ -273,20 +301,17 @@ nav a {
     font-family: 'Playfair Display', serif;
     font-weight: 600;
     font-size: 18px;
-    color: #5f7c5f;
+    color: #000000;
     min-width: 60px;
 }
 
 .event {
-    font-family: 'Tenor Sans', sans-serif !important; /* Наш аналог Todi */
-    font-size: 13px !important; 
-    line-height: 1.8 !important;
-    letter-spacing: 3px !important; /* "Растягиваем" текст для дорогого вида */
-    opacity: 0.7;
-    text-transform: uppercase;     /* Todi лучше всего смотрится заглавными */
-    font-weight: 400 !important;
-    color: #000000 !important; 
-    display: block;
+    font-family: 'Cinzel', serif !important;
+    font-size: 14px !important; 
+    letter-spacing: 5px !important;
+    text-transform: uppercase;
+    color: #000000 !important; /* этот блок это именно слова в скобках */
+    opacity: 0.9;
 }
 
 /* =========================
@@ -347,29 +372,40 @@ nav a {
     width: 90%;
     text-align: center;
 }
+/* Добавь это сразу после .location-card */
+.location-address {
+    font-family: 'Cinzel', serif !important;
+    letter-spacing: 7px !important;
+    text-transform: uppercase !important;
+    font-size: 15px !important;
+    color: #000000 !important;
+}
 
 /* 3. Кнопка-мост (стоит ровно на линии стыка) */
 .round-button {
     display: flex !important;
     align-items: center;
     justify-content: center;
-    width: 130px;
-    height: 130px;
-    background: #8b947a;
-    color: #ffffff !important;
+    width: 115px;
+    height: 115px;
+    background: #5f7c5f;
+    color: #f1f0e8 !important;
     border-radius: 50%;
+    
     
     /* МАГИЯ СТЫКА: выносим кнопку за пределы карточки ровно наполовину */
     margin: 0 auto -125px !important; 
-    
+    font-family: 'Cinzel', serif !important;
+    color: #f1f0e8 !important;
     position: relative;
     z-index: 20;
     text-decoration: none !important;
-    font-size: 13px;
+    font-size: 14px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     box-shadow: 0 10px 30px rgba(139, 148, 122, 0.3);
     transition: all 0.3s ease;
+    font-style: italic
 }
 
 /* 4. Фото (прижимается встык к карточке) */
@@ -406,8 +442,6 @@ nav a {
 .visible {
     opacity: 1 !important;
     transform: translateY(0) !important;
-}
-
 }
 
 /* =========================
