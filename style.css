@@ -1,7 +1,6 @@
 /* =========================
    ОБЩИЕ НАСТРОЙКИ
 ========================= */
-
 * {
     margin: 0;
     padding: 0;
@@ -9,11 +8,11 @@
 }
 
 html {
-    scroll-behavior: smooth; /* Это сделает прокрутку плавной */
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Manrope', sans-serif;
     color: #2d2d2d;
     background-image: url("images/bg.jpg"); 
     background-size: cover;
@@ -22,11 +21,21 @@ body {
     background-repeat: no-repeat;
 }
 
+/* Эффекты появления при скролле */
+.hidden-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
 
 /* =========================
    МЕНЮ
 ========================= */
-
 header {
     position: fixed;
     width: 100%;
@@ -45,19 +54,22 @@ nav {
     display: none;
     flex-direction: column;
     margin-top: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 10px;
 }
 
 nav a {
     text-decoration: none;
     color: #333;
     margin: 8px 0;
+    font-weight: 400;
+    letter-spacing: 1px;
 }
-
 
 /* =========================
    HERO
 ========================= */
-
 .hero {
     position: relative;
     min-height: 100vh;
@@ -69,79 +81,74 @@ nav a {
     overflow: hidden;
 }
 
-.hero-img {
+.hero::after {
+    content: "";
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    z-index: -2;
+    height: 150px;
+    background: linear-gradient(to bottom, transparent, white);
+    z-index: 1;
 }
 
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.35);
-    z-index: -1;
+.hero h1 {
+    font-family: 'Playfair Display', serif; /* Твой актуальный шрифт */
+    font-size: 42px;
+    letter-spacing: 3px;
+    font-style: italic;
+    position: relative;
+    z-index: 2; /* Чтобы буквы были ПОВЕРХ градиента */
 }
 
-/* =========================
-   ТАЙМЕР (НЕВИДИМКА НА БЕЛОМ)
-========================= */
+.subtitle {
+    letter-spacing: 5px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
 
+.wedding-date {
+    margin-top: 20px;
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+
+/* ТАЙМЕР (СТЕКЛО) */
 .countdown {
     margin-top: 30px;
-    display: inline-flex; /* Сжимаем фон под размер текста */
+    display: inline-flex;
     justify-content: center;
     gap: 20px;
-    
-    /* Стеклянный эффект */
     padding: 20px 30px;
     border-radius: 25px;
-
-    /* Делаем фон 1% прозрачности — он станет абсолютно белым на белом */
     background: rgba(255, 255, 255, 0.01); 
-    
-    /* Размытие сработает ТОЛЬКО когда под таймер заедет картинка */
     backdrop-filter: blur(10px);         
     -webkit-backdrop-filter: blur(10px); 
-
-    /* Рамка тоже почти прозрачная (0.1) */
     border: 1px solid rgba(255, 255, 255, 0.1);
-
-    /* УДАЛИЛИ ТЕНЬ (она создавала серый контур на твоем фото) */
     box-shadow: none; 
 }
 
+.countdown span {
+    font-size: 32px;
+    font-weight: 300;
+}
 
 /* =========================
-   СЕКЦИИ
+   СЕКЦИИ (ОБНОВЛЕННЫЙ ТЕКСТ)
 ========================= */
-
-.invitation, 
-.wishes, 
-.schedule {
-    padding: 60px 20px;      /* Уменьшили внутренние отступы */
-    max-width: 800px;        /* ОГРАНИЧИВАЕМ ШИРИНУ БЛОКА */
-    margin: 40px auto;       /* Центрируем блок и добавляем отступы сверху/снизу */
-    width: 90%;              /* Для мобильных, чтобы не прилипало к краям */
-    border-radius: 40px;     /* Сделали углы более мягкими */
-    
-    /* Твой эффект стекла */
+.invitation, .wishes, .schedule {
+    padding: 80px 20px;
+    max-width: 800px;
+    margin: 60px auto;
+    width: 90%;
+    border-radius: 40px;
     background: rgba(255, 255, 255, 0.01) !important; 
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    
-    /* Очистка */
-    box-shadow: none;
     background-image: none !important;
 }
+
 .container {
     max-width: 600px;
     margin: 0 auto;
@@ -149,59 +156,38 @@ nav a {
 }
 
 .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 28px;
-    margin-bottom: 20px;
-}
-
-.sub-title {
-    margin-top: 30px;
-    font-size: 20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+    font-style: italic; /* Трендовый наклон */
 }
 
 .text {
-    margin-bottom: 20px;
-    line-height: 1.7;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 300;
+    line-height: 2; /* Больше воздуха для "дорогого" вида */
+    letter-spacing: 0.5px;
+    margin-bottom: 25px;
+    color: #444;
 }
 
-.small-note {
-    margin-top: 20px;
-    font-size: 14px;
-    opacity: 0.7;
-}
-/* Центрируем контейнер внутри invitation */
-.invitation .container {
-    text-align: center;
-}
-
-/* Общая фотография пары */
+/* ФОТО И ЦИТАТА */
 .couple-photo {
     display: block;
-    max-width: 500px;
-    width: 100%;
+    max-width: 100%;
     height: auto;
-    border-radius: 15px;
-    margin: 20px auto;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    z-index: 1;
-    position: relative;
+    border-radius: 20px;
+    margin: 30px auto;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
 
-/* Цитата под фото */
 .quote {
-    display: block;
     font-style: italic;
     font-size: 18px;
-    margin: 15px auto 25px;
-    max-width: 500px;
-    color: #333;
-}
-
-/* Индивидуальные фотографии */
-.person {
-    display: inline-block;
-    margin: 20px 15px;
-    text-align: center;
+    color: #555;
+    margin-bottom: 40px;
+    opacity: 0.8;
 }
 
 .person img {
@@ -209,219 +195,274 @@ nav a {
     height: 150px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #5f7c5f;
-    display: block;
-    margin: 0 auto;
+    border: 2px solid #5f7c5f;
+    margin-bottom: 10px;
 }
-
-.person h3 {
-    margin-top: 10px;
-    font-size: 16px;
-    font-weight: 500;
-}
-
 
 /* =========================
-   НОВАЯ КНОПКА ПОДТВЕРЖДЕНИЯ
+   ФОРМА И КНОПКИ
 ========================= */
-
 .confirm-toggle {
     margin-top: 20px;
-    padding: 12px 35px;
+    padding: 14px 40px;
     background: #5f7c5f;
     color: white;
     border: none;
     border-radius: 50px;
     font-size: 16px;
     cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(95, 124, 95, 0.3); /* Мягкая тень */
 }
 
 .confirm-toggle:hover {
-    opacity: 0.9;
+    background: #4a634a;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(95, 124, 95, 0.4);
 }
-
-
-/* =========================
-   ВЫЕЗЖАЮЩАЯ ФОРМА
-========================= */
 
 .rsvp-hidden {
     max-height: 0;
     overflow: hidden;
     opacity: 0;
-    transition: max-height 0.6s ease, opacity 0.4s ease;
+    transition: max-height 0.8s ease, opacity 0.5s ease;
 }
 
-/* Этот класс добавляется через JS */
 #rsvpContainer.show {
-    max-height: 1200px !important; /* Даем запас высоты */
+    max-height: 1500px !important;
     opacity: 1 !important;
-    margin-top: 20px;
 }
 
-/* =========================
-   НОВЫЙ СТИЛЬ ФОРМЫ
-========================= */
-
-.rsvp-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.rsvp-form input,
-.rsvp-form textarea {
+.rsvp-form input, .rsvp-form textarea {
+    width: 100%;
     padding: 12px;
+    margin-bottom: 10px;
     border-radius: 10px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-}
-
-.radio-group {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
+    border: 1px solid #ddd;
+    font-family: 'Manrope', sans-serif;
 }
 
 .send-btn {
-    margin-top: 20px;
-    padding: 12px 30px;
+    padding: 12px 40px;
     background: #5f7c5f;
     color: white;
-    border: none;
     border-radius: 30px;
+    border: none;
     cursor: pointer;
+    transition: 0.3s;
 }
-
 
 /* =========================
-   РАСПИСАНИЕ
+   РАСПИСАНИЕ (СТИЛЬНЫЕ ЛИНИИ)
 ========================= */
-
-.timeline {
-    margin-top: 40px;
-}
-
 .time-block {
     display: flex;
-    gap: 20px;
+    gap: 30px;
     margin-bottom: 20px;
-    align-items: flex-start;
+    padding-bottom: 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Тонкая линия */
+    align-items: center;
+}
+
+.time-block:last-child {
+    border-bottom: none; /* Убираем линию у последнего пункта */
 }
 
 .time {
-    font-weight: bold;
-    width: 60px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #5f7c5f;
+    min-width: 60px;
 }
 
 .event {
-    flex: 1;
-    text-align: left;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #666;
+    opacity: 0.9;
 }
-
 
 /* =========================
    КАРТА
 ========================= */
-
 .map-section {
     padding: 80px 20px;
 }
 
 .map-wrapper {
-    max-width: 800px; /* Ограничиваем ширину на ПК, чтобы не была на весь экран */
-    margin: 0 auto;   /* Центрируем всю конструкцию */
+    max-width: 800px;
+    margin: 0 auto;
     text-align: center;
 }
 
 .map-container {
-    margin-top: 30px;
-    border-radius: 20px;
+    border-radius: 30px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    width: 100%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
-
-/* =========================
-   КНОПКА ЯНДЕКС КАРТ (ОЛИВКОВЫЙ ОВАЛ)
-========================= */
 
 .map-button {
     display: inline-block !important;
-    margin-top: 25px !important;
-    padding: 14px 40px !important;
-    background-color: #5f7c5f !important; /* Твой оливковый цвет */
-    color: #ffffff !important;            /* Белый текст */
-    text-decoration: none !important;      /* Убираем синее подчеркивание */
-    border-radius: 50px !important;       /* Овальная форма */
-    font-size: 16px !important;
-    font-weight: 500 !important;
-    font-family: 'Montserrat', sans-serif !important;
-    transition: transform 0.2s ease, background-color 0.3s ease !important;
+    margin-top: 30px !important;
+    padding: 14px 45px !important;
+    background-color: #5f7c5f !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    border-radius: 50px !important;
+    transition: 0.3s !important;
     cursor: pointer !important;
 }
 
-.map-button:hover {
-    background-color: #4a634a !important; /* Немного темнее при наведении */
-    transform: scale(1.03);               /* Легкое увеличение */
+/* ========================================
+   БЛОК МЕСТА ПРОВЕДЕНИЯ (PREMIUM GLASS)
+=========================================== */
+
+/* 1. Карточка с текстом (Эффект дорогого стекла) */
+.location-card {
+    /* Полупрозрачный белый фон */
+    background: rgba(255, 255, 255, 0.6) !important; 
+    /* Размытие фона (цветов из bg.jpg) */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    padding: 60px 20px 50px;
+    border-radius: 0 0 100px 100px; 
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    
+    position: relative;
+    z-index: 10; 
+    margin-top: -20px;
+    text-align: center;
 }
+
+/* 2. Круглая кнопка (Трендовый оливковый) */
+.round-button {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 130px;
+    height: 130px;
+    background: #8b947a; /* Благородный пыльно-оливковый */
+    color: #ffffff !important;
+    border-radius: 50%;
+    
+    /* Отрицательный маржин для "наплыва" на фото */
+    margin: 30px auto -65px; 
+    
+    text-decoration: none !important;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+    
+    position: relative;
+    z-index: 20; /* Поверх карточки и фото */
+    
+    /* Глубокая тень для объема */
+    box-shadow: 0 15px 35px rgba(139, 148, 122, 0.4);
+    transition: all 0.4s ease;
+}
+
+.round-button:hover {
+    transform: scale(1.05) translateY(-5px);
+    background: #7a8369;
+}
+
+/* 3. Контейнер для фото (Рамка) */
+.location-image {
+    width: 100%;
+    height: 450px; 
+    overflow: hidden;
+    border-radius: 40px; 
+    position: relative;
+    z-index: 1; /* Под карточкой и кнопкой */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* 4. ИСПРАВЛЕНИЕ РАСТЯНУТОГО ФОТО VENUE.JPG */
+.location-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Сохраняет пропорции, фото больше не "мыло" */
+    object-position: center;
+    display: block;
+    transition: transform 0.8s ease;
+}
+
+/* Эффект при наведении на фото */
+.location-image:hover img {
+    transform: scale(1.05); /* Легкое увеличение фото внутри рамки */
+}
+
+/* Декор сердечко */
+.card-decor {
+    color: #8b947a;
+    font-size: 40px;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 /* =========================
    АДАПТАЦИЯ ДЛЯ ТЕЛЕФОНА
 ========================= */
-
 @media (max-width: 768px) {
-    /* 1. Очищаем фон у body */
-    body {
-        background: white !important; 
-    }
-
-    /* 2. Создаем неподвижный фон, который НЕ будет растягиваться */
+    body { background: white !important; }
+    
     body::before {
         content: "";
-        position: fixed; /* Фиксируем на экране */
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
         background-image: url("images/mobile-bg.jpg") !important;
-        background-size: cover !important; /* Фото заполнит экран без искажений */
+        background-size: cover !important;
         background-position: center top !important;
         background-repeat: no-repeat !important;
-        z-index: -1; /* Уводим под контент */
+        z-index: -1;
     }
 
-    /* Оставляем остальные настройки (hero, countdown и т.д.) ниже без изменений */
-    .hero {
-        padding: 140px 20px 60px;
-        min-height: 100vh;
-        background: transparent; /* Чтобы было видно фон под ним */
+    .hero h1 { font-size: 36px; }
+
+    .invitation, .wishes, .schedule {
+        padding: 40px 20px;
+        margin: 20px auto;
     }
+
+    .countdown {
+        gap: 10px;
+        padding: 15px;
+    }
+
+    .countdown span { font-size: 24px; }
+
+    .map-container { height: 300px; }
+    .map-container iframe { height: 300px; }
     
-    /* ... твой остальной код адаптации ... */
-}
-    /* Настройка карты для телефона */
-    .map-section {
-        padding: 40px 15px; /* Уменьшаем огромные отступы */
-    }
-
-    .map-container {
-        height: 300px; /* Делаем карту чуть ниже, чтобы она не была огромной */
-        width: 100%;
-        margin-top: 20px;
-    }
-
-    .map-container iframe {
-        height: 300px; /* Высота самого окна карты */
-    }
-
-    /* Настройка кнопки под картой */
     .map-button {
         display: block !important;
-        width: 85% !important;
-        margin: 20px auto !important;
-        text-align: center !important;
-        padding: 12px 20px !important;
+        width: 100% !important;
+        margin: 20px 0 !important;
     }
+
+    /* Адаптация новой карточки места для телефона */
+    .location-card {
+        padding: 40px 15px 30px;
+        border-radius: 0 0 60px 60px; /* Чуть меньше скругление для узкого экрана */
+    }
+
+    .round-button {
+        width: 110px;  /* Уменьшаем круг на мобилке */
+        height: 110px;
+        font-size: 12px;
+        margin: 20px auto -55px; /* Корректируем наезд на фото */
+    }
+
+    .location-image {
+        height: 250px; /* Чтобы фото не занимало весь экран телефона */
+    }
+
 }
