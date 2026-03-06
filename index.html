@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Сергей & Вероника — Свадьба</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=12">
+    <link href="https://fonts.googleapis.com" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css?v=14">
 </head>
 <body>
 
@@ -166,25 +167,27 @@
 <!-- КАРТА -->
 <section class="map-section" id="map-section">
     <div class="container">
-        <h2 class="section-title">Место проведения</h2>
-        
-        <!-- Обертка для карты и кнопки -->
-        <div class="map-wrapper">
-            <div class="map-container">
-                <iframe 
-                    src="https://yandex.ru/map-widget/v1/?ll=51.889313%2C55.666352&z=16&oid=199287506021"
-                    width="100%" 
-                    height="400" 
-                    frameborder="0"
-                    allowfullscreen="true">
-                </iframe>
-            </div>
+        <!-- Фигурная подложка (как на фото) -->
+        <div class="location-card">
+            <div class="card-decor">❤</div> <!-- Сердечко сверху -->
+            
+            <h2 class="section-title">Место проведения</h2>
+            
+            <p class="location-address">
+                База 85,<br>
+                Береговая ул., 185
+            </p>
 
-            <a href="https://yandex.ru/map-widget/v1/?ll=51.889313%2C55.666352&z=16&oid=199287506021"
-               target="_blank"
-               class="map-button">
-                Открыть в Яндекс.Картах
+            <a href="https://yandex.com/maps/-/CPuJE-p1" 
+		target="_blank" 
+		class="round-button">
+                Построить<br>маршрут
             </a>
+        </div>
+
+        <!-- Фото заведения под карточкой -->
+        <div class="location-image">
+            <img src="images/venue.jpg" alt="Видная Усадьба">
         </div>
     </div>
 </section>
@@ -192,6 +195,3 @@
 <script src="script.js"></script>
 </body>
 </html>
-
-
-
