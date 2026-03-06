@@ -1,7 +1,9 @@
 /* =========================
    ОБЩИЕ НАСТРОЙКИ
 ========================= */
-* {
+*/
+
+{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -164,12 +166,14 @@ nav a {
 }
 
 .text {
-    font-family: 'Manrope', sans-serif;
-    font-weight: 300;
-    line-height: 2; /* Больше воздуха для "дорогого" вида */
-    letter-spacing: 0.5px;
-    margin-bottom: 25px;
-    color: #444;
+    font-family: 'Tenor Sans', sans-serif !important; /* Наш аналог Todi */
+    font-size: 18px !important; 
+    line-height: 1.8 !important;
+    letter-spacing: 2px !important; /* "Растягиваем" текст для дорогого вида */
+    text-transform: uppercase;     /* Todi лучше всего смотрится заглавными */
+    font-weight: 400 !important;
+    color: #000000 !important; 
+    display: block;
 }
 
 /* ФОТО И ЦИТАТА */
@@ -183,21 +187,17 @@ nav a {
 }
 
 .quote {
-    font-style: italic;
-    font-size: 18px;
-    color: #555;
-    margin-bottom: 40px;
-    opacity: 0.8;
+    font-family: 'Tenor Sans', sans-serif !important; /* Наш аналог Todi */
+    font-size: 22px !important; 
+    line-height: 1.8 !important;
+    letter-spacing: 4px !important; /* "Растягиваем" текст для дорогого вида */
+    margin: 30px 0 !important;
+    text-transform: uppercase;     /* Todi лучше всего смотрится заглавными */
+    font-weight: 400 !important;
+    color: #000000 !important; 
+    display: block;
 }
 
-.person img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #5f7c5f;
-    margin-bottom: 10px;
-}
 
 /* =========================
    ФОРМА И КНОПКИ
@@ -278,12 +278,15 @@ nav a {
 }
 
 .event {
-    font-family: 'Manrope', sans-serif;
-    font-weight: 300;
-    font-size: 14px;
-    letter-spacing: 1px;
-    color: #666;
-    opacity: 0.9;
+    font-family: 'Tenor Sans', sans-serif !important; /* Наш аналог Todi */
+    font-size: 13px !important; 
+    line-height: 1.8 !important;
+    letter-spacing: 3px !important; /* "Растягиваем" текст для дорогого вида */
+    opacity: 0.7;
+    text-transform: uppercase;     /* Todi лучше всего смотрится заглавными */
+    font-weight: 400 !important;
+    color: #000000 !important; 
+    display: block;
 }
 
 /* =========================
@@ -318,69 +321,67 @@ nav a {
 }
 
 /* ========================================
-   БЛОК МЕСТА ПРОВЕДЕНИЯ (PREMIUM GLASS)
+   МЕСТО ПРОВЕДЕНИЯ (ЧИСТЫЙ СТЫК)
 =========================================== */
 
-/* 1. Карточка с текстом (Эффект дорогого стекла) */
 .location-card {
-    /* Полупрозрачный белый фон */
-    background: rgba(255, 255, 255, 0.6) !important; 
-    /* Размытие фона (цветов из bg.jpg) */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    /* 1. Делаем симметричные углы со всех сторон */
+    border-radius: 60px !important; 
     
-    padding: 60px 20px 50px;
-    border-radius: 0 0 100px 100px; 
+    /* 2. Стеклянный эффект */
+    background: rgba(255, 255, 255, 0.4) !important; 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    
     border: 1px solid rgba(255, 255, 255, 0.4);
-    
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.03);
+
+    padding: 60px 30px 60px; /* Увеличили нижний отступ для кнопки */
     position: relative;
-    z-index: 10; 
-    margin-top: -20px;
+    z-index: 10;
+    
+    /* УБИРАЕМ НАПЛЫВ: ставим margin-bottom в 0 */
+    margin: 40px auto 0; 
+    
+    max-width: 600px;
+    width: 90%;
     text-align: center;
 }
 
-/* 2. Круглая кнопка (Трендовый оливковый) */
+/* 3. Кнопка-мост (стоит ровно на линии стыка) */
 .round-button {
     display: flex !important;
     align-items: center;
     justify-content: center;
     width: 130px;
     height: 130px;
-    background: #8b947a; /* Благородный пыльно-оливковый */
+    background: #8b947a;
     color: #ffffff !important;
     border-radius: 50%;
     
-    /* Отрицательный маржин для "наплыва" на фото */
-    margin: 30px auto -65px; 
+    /* МАГИЯ СТЫКА: выносим кнопку за пределы карточки ровно наполовину */
+    margin: 0 auto -125px !important; 
     
+    position: relative;
+    z-index: 20;
     text-decoration: none !important;
     font-size: 13px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    font-weight: 500;
-    
-    position: relative;
-    z-index: 20; /* Поверх карточки и фото */
-    
-    /* Глубокая тень для объема */
-    box-shadow: 0 15px 35px rgba(139, 148, 122, 0.4);
-    transition: all 0.4s ease;
+    box-shadow: 0 10px 30px rgba(139, 148, 122, 0.3);
+    transition: all 0.3s ease;
 }
 
-.round-button:hover {
-    transform: scale(1.05) translateY(-5px);
-    background: #7a8369;
-}
-
-/* 3. Контейнер для фото (Рамка) */
+/* 4. Фото (прижимается встык к карточке) */
 .location-image {
     width: 100%;
     height: 450px; 
     overflow: hidden;
-    border-radius: 40px; 
+    border-radius: 60px; /* Углы такие же, как у карточки */
     position: relative;
-    z-index: 1; /* Под карточкой и кнопкой */
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    z-index: 1;
+    margin-top: 0 !important; /* Убираем любые зазоры */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
 }
 
 /* 4. ИСПРАВЛЕНИЕ РАСТЯНУТОГО ФОТО VENUE.JPG */
@@ -397,15 +398,16 @@ nav a {
 .location-image:hover img {
     transform: scale(1.05); /* Легкое увеличение фото внутри рамки */
 }
+.hidden-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1.2s cubic-bezier(0.2, 1, 0.3, 1);
+}
+.visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
 
-/* Декор сердечко */
-.card-decor {
-    color: #8b947a;
-    font-size: 40px;
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
 }
 
 /* =========================
